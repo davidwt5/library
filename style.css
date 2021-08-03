@@ -10,6 +10,19 @@
 h1 {
     font-weight: 500;
     text-align: center;
+    margin-bottom: 2px;
+}
+
+.new-book {
+    background-color: #2ea44f;
+    border-radius: 5px;
+    border: 0.5px solid black;
+    color: white;
+    cursor: pointer;
+    display: block;
+    height: 30px;
+    margin: 0 0 10px auto;
+    width: 60px;
 }
 
 .book {
