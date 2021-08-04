@@ -52,6 +52,11 @@ function hideForm(){
 const newBookBtn = document.querySelector('.new-book');
 newBookBtn.addEventListener('click', e => bringUpForm());
 
+document.documentElement.addEventListener('keydown', e => {
+    if(e.code === "Escape")
+        hideForm();
+});
+
 addBookToLibrary(new Book("LOTR", "J.R.R Tolkien", true), myLibrary);
 addBookToLibrary(new Book("The Room", "Tommy Wiseau", false), myLibrary);
 
