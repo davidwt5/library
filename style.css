@@ -7,6 +7,46 @@
     margin: auto;
 }
 
+.ghost {
+    display: none;
+}
+
+.grayed-out {
+    background-color: rgb(82, 82, 82);
+}
+
+.new-book-form {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 510px;
+    margin: 0 auto;
+    width: 300px;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.new-book-form > h3 {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.new-book-form > div {
+    margin: 10px;
+}
+
+.new-book-form > button {
+    display: block;
+    margin: 10px auto;
+    cursor: pointer;
+}
+
+.new-book-form > div > input {
+    float: right;
+}
+
 h1 {
     font-weight: 500;
     text-align: center;

@@ -1,8 +1,9 @@
 let myLibrary = [];
 
-function Book(title, author) {
+function Book(title, author, read) {
     this.title = title;
     this.author = author;
+    this.read = read;
 }
 
 function addBookToLibrary(book, library) {
@@ -34,7 +35,24 @@ function createBookCard(book) {
     return card;
 }
 
-addBookToLibrary(new Book("LOTR", "J.R.R Tolkien"), myLibrary);
-addBookToLibrary(new Book("The Room", "Tommy Wiseau"), myLibrary);
+function bringUpForm(){
+    const body = document.getElementsByTagName('body')[0];
+    const form = document.querySelector('.new-book-form');
+    body.classList.add("grayed-out");
+    form.classList.remove("ghost");
+}
+
+function hideForm(){
+    const body = document.getElementsByTagName('body')[0];
+    const form = document.querySelector('.new-book-form');
+    body.classList.remove("grayed-out");
+    form.classList.add("ghost");
+}
+
+const newBookBtn = document.querySelector('.new-book');
+newBookBtn.addEventListener('click', e => bringUpForm());
+
+addBookToLibrary(new Book("LOTR", "J.R.R Tolkien", true), myLibrary);
+addBookToLibrary(new Book("The Room", "Tommy Wiseau", false), myLibrary);
 
 displayLibrary(myLibrary);
