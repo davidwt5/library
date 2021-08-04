@@ -22,6 +22,11 @@ function displayLibrary(library){
     }
 }
 
+function refreshLibrary(){
+    deleteAllChildren(document.querySelector('.library'));
+    displayLibrary(myLibrary);
+}
+
 function createBookCard(book) {
     let card = document.createElement("div");
     card.classList.add("book");
@@ -36,6 +41,17 @@ function createBookCard(book) {
     author.innerText = book.author;
     card.appendChild(author);
 
+    let deleteBook = document.createElement('img');
+    deleteBook.src = "img/cross-icon.png";
+    deleteBook.classList.add('close-icon');
+    deleteBook.addEventListener('click', e => {
+        let book = myLibrary.find(element => element.title === title.innerText && element.author === author.innerText);
+        let index = myLibrary.indexOf(book);
+        if(index > -1) myLibrary.splice(index, 1);
+        refreshLibrary();
+    });
+    
+    card.appendChild(deleteBook);
     return card;
 }
 
@@ -69,14 +85,13 @@ document.documentElement.addEventListener('keydown', e => {
 
 const newBookSubmission = document.querySelector('.new-book-sumbmission');
 newBookSubmission.addEventListener('click', e => {
-    console.log('hi');
     const title = document.querySelector('#title-input').value;
     const author = document.querySelector('#author-input').value;
     const read = document.querySelector('#read-input').checked;
     const book = new Book(title, author, read);
+
     addBookToLibrary(book, myLibrary);
-    deleteAllChildren(document.querySelector('.library'));
-    displayLibrary(myLibrary);
+    refreshLibrary();
     clearForm();
     hideForm();
 });
