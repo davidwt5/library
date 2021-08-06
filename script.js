@@ -42,7 +42,7 @@ function createBookCard(book) {
     card.appendChild(author);
 
     let deleteBook = document.createElement('img');
-    deleteBook.src = "img/cross-icon.png";
+    deleteBook.src = "icons/cross.png";
     deleteBook.classList.add('close-icon');
     deleteBook.addEventListener('click', e => {
         let book = myLibrary.find(element => element.title === title.innerText && element.author === author.innerText);
@@ -50,8 +50,18 @@ function createBookCard(book) {
         if(index > -1) myLibrary.splice(index, 1);
         refreshLibrary();
     });
-    
     card.appendChild(deleteBook);
+
+    let readIcon = document.createElement('img');
+    readIcon.src = book.read ? "icons/eye.png" : "icons/eye-off.png";
+    readIcon.classList.add('read-icon');
+    readIcon.addEventListener('click', e => {
+        let book = myLibrary.find(element => element.title === title.innerText && element.author === author.innerText);
+        book.read = book.read ? false : true;
+        readIcon.src = book.read ? "icons/eye.png" : "icons/eye-off.png";
+    });
+    card.appendChild(readIcon);
+
     return card;
 }
 
