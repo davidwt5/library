@@ -41,6 +41,8 @@ function createBookCard(book) {
     author.innerText = book.author;
     card.appendChild(author);
 
+    // Notice how these callback functions reference varialbes which no longer exist when they're called
+    // However, they still have access to these private variables because of closure
     let deleteBook = document.createElement('img');
     deleteBook.src = "icons/cross.png";
     deleteBook.classList.add('close-icon');
